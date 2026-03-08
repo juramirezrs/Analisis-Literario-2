@@ -54,6 +54,7 @@ export function HydeRunnerGame({ onClose }: { onClose: () => void }) {
   const scoreRef = useRef(0)
   const gameSpeedRef = useRef(6)
   const frameCountRef = useRef(0)
+  const isPlayingRef = useRef(false)
 
   const GRAVITY = 0.8
   const JUMP_FORCE = -15
@@ -447,6 +448,7 @@ export function HydeRunnerGame({ onClose }: { onClose: () => void }) {
 
     for (const obs of obstaclesRef.current) {
       if (checkCollision(player, obs, groundY)) {
+        isPlayingRef.current = false
         setGameState(prev => ({
           ...prev,
           isPlaying: false,
@@ -475,9 +477,15 @@ export function HydeRunnerGame({ onClose }: { onClose: () => void }) {
     ctx.font = "bold 12px serif"
     ctx.fillText("HYDE", player.x + 5, player.y - 15)
 
-    // ✅ FIX: usa ref para evitar el closure stale
-    gameLoopRef.current = requestAnimationFrame(() => gameLoopFnRef.current?.())
+    if (isPlayingRef.current) {
+      gameLoopRef.current = requestAnimationFrame(() => gameLoopFnRef.current?.())
+    }
   }, [spawnObstacle, checkCollision, drawObstacle, drawPlayer])
+
+  // Keep gameLoopFnRef always pointing to the latest version of gameLoop
+  useEffect(() => {
+    gameLoopFnRef.current = gameLoop
+  }, [gameLoop])
 
   const startGame = useCallback(() => {
     if (gameLoopRef.current) {
@@ -485,6 +493,7 @@ export function HydeRunnerGame({ onClose }: { onClose: () => void }) {
     }
 
     resetGame()
+    isPlayingRef.current = true
 
     setGameState(prev => ({
       ...prev,
@@ -494,12 +503,12 @@ export function HydeRunnerGame({ onClose }: { onClose: () => void }) {
       score: 0,
     }))
 
-    // ✅ FIX: guarda la función actual en el ref antes de llamarla
     gameLoopFnRef.current = gameLoop
     gameLoopRef.current = requestAnimationFrame(() => gameLoopFnRef.current?.())
   }, [resetGame, gameLoop])
 
   const goBack = useCallback(() => {
+    isPlayingRef.current = false
     if (gameLoopRef.current) {
       cancelAnimationFrame(gameLoopRef.current)
     }
