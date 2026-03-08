@@ -18,6 +18,12 @@ export default function OracleOfMirrors() {
   const [activeSection, setActiveSection] = useState("home")
   const [dignityAnswer, setDignityAnswer] = useState<"yes" | "no" | null>(null)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+  if (typeof window !== "undefined") {
+    setIsMobile(window.innerWidth < 900)
+  }
+}, [])
 
   const triggerConfetti = useCallback(() => {
     const duration = 3 * 1000
@@ -86,6 +92,11 @@ export default function OracleOfMirrors() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      {isMobile && (
+  <div className="fixed top-0 left-0 w-full bg-red-600 text-white text-center py-3 z-[9999]">
+    ⚠️ Esta experiencia fue diseñada para computador. Algunas funciones pueden no funcionar bien en celular.
+  </div>
+)}
       <ParticleBackground />
       
       <Navigation activeSection={activeSection} isRevealed={isRevealed} />
