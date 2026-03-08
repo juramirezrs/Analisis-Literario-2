@@ -182,7 +182,7 @@ export default function OracleOfMirrors() {
                       </h2>
                       
                     <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
-  Al inicio te preguntamos: <em className="text-foreground">«¿Dónde queda la dignidad en esos pedazos rotos?»</em>
+  Al inicio te preguntamos: <em className="text-foreground">«¿dónde queda la dignidad en esos pedazos rotos?»</em>
 </p>
                       
                       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
