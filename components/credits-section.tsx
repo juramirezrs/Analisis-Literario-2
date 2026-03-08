@@ -31,7 +31,7 @@ const bibliography = [
 ]
 
 const aiTools = [
-  { name: "ChatGPT", use: "Desarrollo de la página web y diseño de interfaz" },
+  { name: "ChatGPT, Vercel, GitHub", use: "Desarrollo de la página web y diseño de interfaz" },
   { name: "Gemini", use: "Creación de las imágenes simbólicas y cartas de tarot" },
 ]
 
