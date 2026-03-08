@@ -448,15 +448,24 @@ export function CreativeSection() {
         )}
       </AnimatePresence>
 
-    {/* Hyde Runner Game - Directo */}
+  {/* Hyde Runner Game Modal */}
 <AnimatePresence>
   {showRunnerGame && (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
-      className="mt-8 p-6 bg-card rounded-xl border-2 border-mystic/50 shadow-xl"
-    >
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50"
+        onClick={() => setShowRunnerGame(false)}
+      />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="fixed inset-4 md:inset-8 lg:inset-16 z-50 overflow-auto rounded-2xl bg-card border border-border shadow-2xl p-6"
+      >
       {/* Close Button */}
       <div className="flex justify-end mb-4">
         <button
