@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { RotateCcw, ArrowLeft } from "lucide-react"
 
+const hydeImg = new Image()
+hydeImg.src = "/images/hyde cha.png"
+
 interface Obstacle {
   x: number
   width: number
@@ -162,72 +165,9 @@ export function HydeRunnerGame({ onClose }: { onClose: () => void }) {
   }
 
   const drawPlayer = (ctx: CanvasRenderingContext2D, groundY: number) => {
-    const p = playerRef.current
-    ctx.save()
-
-    if (p.isDucking) {
-      ctx.fillStyle = "#1a1a1a"
-      ctx.fillRect(p.x, groundY - 28, p.width - 5, 22)
-      ctx.beginPath(); ctx.arc(p.x + 15, groundY - 28, 12, Math.PI, 0); ctx.fill()
-      ctx.fillStyle = "#9a8a7a"
-      ctx.beginPath(); ctx.ellipse(p.x + 32, groundY - 18, 8, 10, 0.3, 0, Math.PI * 2); ctx.fill()
-      ctx.fillStyle = "#2a2a2a"
-      ctx.beginPath()
-      ctx.moveTo(p.x + 25, groundY - 25); ctx.lineTo(p.x + 30, groundY - 32)
-      ctx.lineTo(p.x + 35, groundY - 28); ctx.lineTo(p.x + 40, groundY - 33)
-      ctx.lineTo(p.x + 42, groundY - 25); ctx.closePath(); ctx.fill()
-    } else {
-      ctx.fillStyle = "#1a1a1a"
-      ctx.beginPath()
-      ctx.moveTo(p.x + 5, p.y + 20); ctx.lineTo(p.x + 35, p.y + 18)
-      ctx.lineTo(p.x + 38, p.y + 58); ctx.lineTo(p.x + 2, p.y + 60)
-      ctx.closePath(); ctx.fill()
-      ctx.beginPath(); ctx.arc(p.x + 15, p.y + 18, 15, Math.PI, 0); ctx.fill()
-      ctx.fillStyle = "#9a8a7a"
-      ctx.beginPath(); ctx.ellipse(p.x + 25, p.y + 8, 10, 12, 0.2, 0, Math.PI * 2); ctx.fill()
-      ctx.fillStyle = "#2a2a2a"
-      ctx.beginPath()
-      ctx.moveTo(p.x + 12, p.y + 2); ctx.lineTo(p.x + 18, p.y - 10)
-      ctx.lineTo(p.x + 22, p.y - 3); ctx.lineTo(p.x + 28, p.y - 12)
-      ctx.lineTo(p.x + 32, p.y - 5); ctx.lineTo(p.x + 38, p.y - 8)
-      ctx.lineTo(p.x + 38, p.y + 5); ctx.closePath(); ctx.fill()
-      ctx.strokeStyle = "#3a1a1a"; ctx.lineWidth = 2
-      ctx.beginPath(); ctx.arc(p.x + 28, p.y + 12, 6, 0.2, Math.PI - 0.2); ctx.stroke()
-      ctx.fillStyle = "#e8e8d0"
-      ctx.beginPath()
-      ctx.moveTo(p.x + 23, p.y + 14); ctx.lineTo(p.x + 25, p.y + 17)
-      ctx.lineTo(p.x + 27, p.y + 14); ctx.lineTo(p.x + 29, p.y + 17)
-      ctx.lineTo(p.x + 31, p.y + 14); ctx.fill()
-      ctx.fillStyle = "#9a8a7a"
-      ctx.beginPath()
-      ctx.moveTo(p.x + 38, p.y + 35); ctx.lineTo(p.x + 45, p.y + 32)
-      ctx.lineTo(p.x + 48, p.y + 28); ctx.lineTo(p.x + 46, p.y + 35)
-      ctx.lineTo(p.x + 50, p.y + 32); ctx.lineTo(p.x + 47, p.y + 38)
-      ctx.closePath(); ctx.fill()
-      if (p.isJumping) {
-        ctx.fillStyle = "#2d1b2e"
-        ctx.beginPath()
-        ctx.moveTo(p.x + 5, p.y + 25); ctx.lineTo(p.x - 20, p.y + 55)
-        ctx.lineTo(p.x - 10, p.y + 60); ctx.lineTo(p.x + 5, p.y + 55)
-        ctx.fill()
-      }
-    }
-
-    ctx.fillStyle = "#ff2222"; ctx.shadowColor = "#ff0000"; ctx.shadowBlur = 8
-    if (p.isDucking) {
-      ctx.beginPath()
-      ctx.arc(p.x + 30, groundY - 20, 2, 0, Math.PI * 2)
-      ctx.arc(p.x + 36, groundY - 21, 2, 0, Math.PI * 2)
-      ctx.fill()
-    } else {
-      ctx.beginPath()
-      ctx.arc(p.x + 22, p.y + 6, 2.5, 0, Math.PI * 2)
-      ctx.arc(p.x + 30, p.y + 5, 2.5, 0, Math.PI * 2)
-      ctx.fill()
-    }
-    ctx.shadowBlur = 0
-    ctx.restore()
-  }
+  const p = playerRef.current
+  ctx.drawImage(hydeImg, p.x, p.y, 60, 60)
+}
 
   const drawObstacle = (ctx: CanvasRenderingContext2D, obs: Obstacle, groundY: number) => {
     ctx.save()
