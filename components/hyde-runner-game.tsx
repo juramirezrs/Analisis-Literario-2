@@ -4,8 +4,12 @@ import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { RotateCcw, ArrowLeft } from "lucide-react"
 
-const hydeImg = new Image()
-hydeImg.src = "/images/hyde cha.png"
+let hydeImg: HTMLImageElement | null = null
+
+if (typeof window !== "undefined") {
+  hydeImg = new Image()
+  hydeImg.src = "/images/hyde cha.png"
+}
 
 interface Obstacle {
   x: number
