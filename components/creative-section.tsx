@@ -448,85 +448,66 @@ export function CreativeSection() {
         )}
       </AnimatePresence>
 
-      {/* Hyde Runner Game Modal */}
-      <AnimatePresence>
-        {showRunnerGame && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50"
-              onClick={() => setShowRunnerGame(false)}
-            />
+    {/* Hyde Runner Game - Directo */}
+<AnimatePresence>
+  {showRunnerGame && (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      className="mt-8 p-6 bg-card rounded-xl border-2 border-mystic/50 shadow-xl"
+    >
+      {/* Close Button */}
+      <div className="flex justify-end mb-4">
+        <button
+          onClick={() => setShowRunnerGame(false)}
+          className="p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="fixed inset-4 md:inset-8 lg:inset-16 z-50 overflow-hidden rounded-2xl bg-card border border-border shadow-2xl"
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setShowRunnerGame(false)}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
+      {/* Header */}
+      <div className="text-center mb-6">
+        <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
+          Dr. Jekyll y Mr. Hyde
+        </p>
+        <h3 className="font-serif text-3xl md:text-4xl text-primary mb-2">
+          La Huida de Hyde
+        </h3>
+        <p className="text-lg text-muted-foreground italic mb-4">
+          Juego de Escape
+        </p>
+        <div className="max-w-xl mx-auto p-4 bg-mystic/10 border border-mystic/30 rounded-xl">
+          <p className="text-sm text-mystic/90 italic">
+            Creamos un juego interactivo para representar de forma visual y didáctica la huida constante de Hyde por las calles de Londres, permitiendo experimentar la tensión y desesperación del personaje.
+          </p>
+        </div>
+      </div>
 
-              <div className="h-full overflow-y-auto p-6 md:p-8">
-                {/* Header */}
-                <div className="mb-8 text-center">
-                  <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
-                    Dr. Jekyll y Mr. Hyde
-                  </p>
-                  <h3 className="font-serif text-3xl md:text-4xl text-primary mb-2">
-                    La Huida de Hyde
-                  </h3>
-                  <p className="text-lg text-muted-foreground italic mb-4">
-                    Juego de Escape
-                  </p>
-                  {/* Creative Note */}
-                  <div className="max-w-xl mx-auto p-4 bg-mystic/10 border border-mystic/30 rounded-xl">
-                    <p className="text-sm text-mystic/90 italic">
-                      Creamos un juego interactivo para representar de forma visual y didáctica la huida constante de Hyde por las calles de Londres, permitiendo experimentar la tensión y desesperación del personaje.
-                    </p>
-                  </div>
-                </div>
+      {/* Game */}
+      <div className="max-w-4xl mx-auto">
+        <HydeRunnerGame onClose={() => setShowRunnerGame(false)} />
+      </div>
 
-                {/* Game */}
-                <div className="max-w-4xl mx-auto">
-                  <HydeRunnerGame onClose={() => setShowRunnerGame(false)} />
-                </div>
-
-                {/* Post-it Note */}
-                <div className="max-w-xl mx-auto mt-8">
-                  <div className="relative bg-yellow-200 p-5 shadow-lg transform rotate-1" style={{ 
-                    backgroundImage: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-                    boxShadow: '2px 2px 10px rgba(0,0,0,0.2)'
-                  }}>
-                    {/* Tape effect */}
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-amber-100/80 opacity-70" />
-                    
-                    <p className="text-amber-900 text-sm font-medium mb-2">Nota sobre el libro:</p>
-                    <p className="text-amber-800 text-sm leading-relaxed">
-                      En la novela original, Mr. Hyde no es perseguido visualmente por la policía como en este juego. 
-                      Después de asesinar a Sir Danvers Carew, Hyde desaparece completamente. La policía lo busca 
-                      por toda Londres, pero nunca logran encontrarlo. El misterio de su paradero es parte de la 
-                      tensión de la historia, ya que nadie sabe que Hyde y Jekyll son la misma persona.
-                    </p>
-                    <p className="text-amber-700 text-xs mt-3 italic">
-                      — Este juego es una interpretación creativa para representar la desesperación del personaje.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-
-    </div>
-  )
-}
+      {/* Post-it Note */}
+      <div className="max-w-xl mx-auto mt-8">
+        <div className="relative bg-yellow-200 p-5 shadow-lg transform rotate-1" style={{ 
+          backgroundImage: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+          boxShadow: '2px 2px 10px rgba(0,0,0,0.2)'
+        }}>
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-amber-100/80 opacity-70" />
+          
+          <p className="text-amber-900 text-sm font-medium mb-2">Nota sobre el libro:</p>
+          <p className="text-amber-800 text-sm leading-relaxed">
+            En la novela original, Mr. Hyde no es perseguido visualmente por la policía como en este juego. 
+            Después de asesinar a Sir Danvers Carew, Hyde desaparece completamente. La policía lo busca 
+            por toda Londres, pero nunca logran encontrarlo. 
+          </p>
+          <p className="text-amber-700 text-xs mt-3 italic">
+            — Este juego es una interpretación creativa para representar la desesperación del personaje.
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  )}
