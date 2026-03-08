@@ -511,3 +511,8 @@ export function CreativeSection() {
       </div>
     </motion.div>
   )}
+</AnimatePresence>
+
+    </div>
+  )
+}
