@@ -538,7 +538,7 @@ export function TribunalSection() {
             <div className="bg-card rounded-xl p-6 border border-border/50">
               <div className="flex items-center gap-2 mb-4">
                 <UserCheck className="w-5 h-5 text-green-400" />
-                <h5 className="font-serif text-lg text-foreground">En qué se parecen</h5>
+                <h5 className="font-serif text-lg text-foreground">¿En qué se parecen?</h5>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2 text-muted-foreground text-sm">
@@ -564,7 +564,7 @@ export function TribunalSection() {
             <div className="bg-card rounded-xl p-6 border border-border/50">
               <div className="flex items-center gap-2 mb-4">
                 <UserX className="w-5 h-5 text-primary" />
-                <h5 className="font-serif text-lg text-foreground">En qué se diferencian</h5>
+                <h5 className="font-serif text-lg text-foreground">¿En qué se diferencian?</h5>
               </div>
               <div className="space-y-4">
                 {comparacionProtagonistas.diferencias.map((item, i) => (
