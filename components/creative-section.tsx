@@ -49,7 +49,7 @@ Del Conde de Montecristo
 
 París, año de 1838
 
-Yo, quien una vez fue Edmond Dantés, marinero de Marsella, escribo estas palabras no como despedida, sino como confesión.
+Yo, quien una vez fui Edmond Dantés, marinero de Marsella, escribo estas palabras no como despedida, sino como confesión.
 
 Durante catorce años, el Castillo de If me robó todo: mi juventud, mi amor, mi nombre. Pero también me dio algo: tiempo. Tiempo para aprender, para planear, para convertirme en alguien que pudiera hacer justicia.
 
@@ -71,9 +71,7 @@ A Maximilian y Valentine, les dejo la isla de Montecristo y la mitad de mi fortu
 
 A Haydée, quien me amó sin pedir nada, le dejo mi gratitud eterna y la libertad de elegir su propio destino.
 
-Y a quien lea esto, le dejo esta advertencia:
-
-la venganza es un plato que se sirve frío... pero quien lo cocina termina quemándose las manos.
+Y a quien lea esto, le dejo esta advertencia:la venganza es un plato que se sirve frío... pero quien lo cocina termina quemándose las manos.
 
 «Esperar y tener esperanza» — esas fueron las últimas palabras del Abbé. Ojalá las hubiera entendido antes.
 
